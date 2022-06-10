@@ -1,18 +1,18 @@
-// create init function to build inital plot when refreshed
+// create init function
 function init(){
-    buildPlot()
+    createplot()
 }
 
-//create function that will apply once the option has changed
-function optionChanged() {
+//create change function
+function changeoption() {
   
-    // Build the plot with the new stock
-    buildPlot();
+    // Building the plot
+    createplot();
   }
 
 
-//create a function that builds the new plot. 
-function buildPlot(){
+//building a function that builds the new plot
+function createplot(){
 
 
     d3.json("samples.json").then((data) =>{
@@ -27,7 +27,7 @@ function buildPlot(){
         var currentID = d3.selectAll("#selDataset").node().value;
      
 
-        //filter the data for the current ID to get relavant information
+        //filter the data for the current ID to get relevant information
         filteredID = data.samples.filter(entry => entry.id == currentID);
 
         // create Trace for the horizontal bar chart
@@ -43,7 +43,7 @@ function buildPlot(){
         // data
         var dataPlot = [trace1];
 
-        // Layout
+        // layout
         var layout = {
             title : 'Top 10 OTU samples',
             margin: {
